@@ -2,7 +2,7 @@
 import mandrill
 
 
-lista = ["custodioguerra@yahoo.com.br ", "danilo.nagem@gmail.com ", "hertzw@gmail.com ", "lyaneramalho@gmail.com ",
+lista_lais = ["custodioguerra@yahoo.com.br ", "danilo.nagem@gmail.com ", "hertzw@gmail.com ", "lyaneramalho@gmail.com ",
          "higormorais@gmail.com ", "philippi.sedir@gmail.com ", "monte.daniele@gmail.com ", "jailtoncarlos@gmail.com ",
          "ribeirodantasdm@gmail.com ", "aquilesburlamaqui@gmail.com ", "allysonbarrosrn@gmail.com ",
          "rraffaelpinto@gmail.com ", "rdsilva0205@gmail.com ", "robinson.alves25@gmail.com ", "paivatulio@gmail.com ",

@@ -54,25 +54,25 @@ def receptor_solicitacoes(request):
 
         submissao.save()
 
-        domain = re.search("@[\w.]+", remetente['email_remetente'])
-
-        if domain.group() == '@sedis.ufrn.br':
-            mandrill_client = mandrill.Mandrill(API_KEY)
-            data = datetime.now().strftime("%d-%m-%Y as %H:%M:%S")
-            message = {
-                'from_email': 'x9@sedis.ufrn.br',
-                'from_name': 'X9 Emails SEDIS',
-                'subject': 'Disparo de email SEDIS - Mandrill',
-                'text': 'Luide, \n\nO usuário {0} disparou {1} emails no dia {2}.'.format(
-                                                        usuario_remetente.usuario.nome, len(remetente['para']), data),
-                'to': [{'email': 'luide@sedis.ufrn.br',
-                        'name': 'Luide Capanema',
-                        'type': 'to'}],
-            }
-            result = mandrill_client.messages.send(message=message)
-
         result = send_mail(remetente['template'], remetente['para'], remetente['nome_remetente'],
                            remetente['email_remetente'])
+
+        # domain = re.search("@[\w.]+", remetente['email_remetente'])
+
+        # if domain.group() == '@sedis.ufrn.br':
+        #     mandrill_client = mandrill.Mandrill(API_KEY)
+        #     data = datetime.now().strftime("%d-%m-%Y as %H:%M:%S")
+        #     message = {
+        #         'from_email': 'x9@sedis.ufrn.br',
+        #         'from_name': 'X9 Emails SEDIS',
+        #         'subject': 'Disparo de email SEDIS - Mandrill',
+        #         'text': 'Luide, \n\nO usuário {0} disparou {1} emails no dia {2}.'.format(
+        #             usuario_remetente.usuario.nome, len(remetente['para']), data),
+        #         'to': [{'email': 'luide@sedis.ufrn.br',
+        #                 'name': 'Luide Capanema',
+        #                 'type': 'to'}],
+        #     }
+        #     result = mandrill_client.messages.send(message=message)
 
         return JsonResponse({'status': 'enviado'})
     except Projetos.DoesNotExist:
