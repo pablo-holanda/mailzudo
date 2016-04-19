@@ -15,7 +15,7 @@ class Remetente(models.Model):
 
 class Projetos(models.Model):
     usuario = models.ForeignKey(Remetente)
-    projeto = models.CharField(max_length=120)
+    projeto = models.CharField(max_length=120, unique=True)
     ativo = models.BooleanField(default=True)
 
     def __unicode__(self):
